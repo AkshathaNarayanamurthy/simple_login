@@ -11,12 +11,16 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { UserService } from './user.service';
 import { LoginGuardGuard } from './login-guard.guard';
+import { UserComponentComponent } from './user-component/user-component.component';
+import { PageNotFoundComponentComponent } from './page-not-found-component/page-not-found-component.component';
 
 const appRoutes: Routes = [
   { path: '', component: LoginFormComponent },
+  { path: ':name', component:UserComponentComponent},
   { path: 'dashboard', 
     canActivate:[LoginGuardGuard],
-    component: DashboardComponent }
+    component: DashboardComponent },
+  { path:'**', component: PageNotFoundComponentComponent},
 ];
 
 @NgModule({
@@ -25,7 +29,9 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     LoginFormComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserComponentComponent,
+    PageNotFoundComponentComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
