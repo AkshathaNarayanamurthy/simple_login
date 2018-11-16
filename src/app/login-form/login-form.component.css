@@ -1,0 +1,11 @@
+
+div.input {
+    position: relative;
+    margin-top: 20px;
+}
+
+div.input input {
+	padding: 10px 20px;
+	font-size: 20px;
+	outline: 0;
+}
