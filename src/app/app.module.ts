@@ -9,9 +9,14 @@ import { FooterComponent } from './footer/footer.component';
 import { LoginFormComponent } from './login-form/login-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
+import { UserService } from './user.service';
+import { LoginGuardGuard } from './login-guard.guard';
+
 const appRoutes: Routes = [
   { path: '', component: LoginFormComponent },
-  { path: 'dashboard', component: DashboardComponent }
+  { path: 'dashboard', 
+    canActivate:[LoginGuardGuard],
+    component: DashboardComponent }
 ];
 
 @NgModule({
@@ -27,7 +32,7 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [LoginGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
